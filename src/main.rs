@@ -7,12 +7,6 @@ fn read_string() -> String
     operation
 }
 
-fn split_into_whitespaces(content : &str) -> Vec<&str>
-{
-    let result : Vec<_> = content.split_whitespace().collect();
-    result
-}
-
 fn apply_operator(lhs : f64, rhs : f64, token : &str) -> Option<f64>
 {
     match token
@@ -26,11 +20,11 @@ fn apply_operator(lhs : f64, rhs : f64, token : &str) -> Option<f64>
     }
 }
 
-fn compute(tokens : &[&str]) -> f64
+fn compute(tokens : &str) -> f64
 {
     let mut operation_stack = Vec::new();
 
-    for token in tokens
+    for token in tokens.split_whitespace()
     {
         if let Ok(num) = token.parse::<f64>()
         {
@@ -59,5 +53,5 @@ fn main()
 {
     print!("Enter an operation : ");
     std::io::stdout().flush();
-    println!("Result : {}", compute(&split_into_whitespaces(&read_string())));
+    println!("Result : {}", compute(&read_string()));
 }
