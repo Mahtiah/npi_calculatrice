@@ -1,0 +1,6 @@
+[package]
+name = "npi_calculatrice"
+version = "0.1.0"
+authors = ["Mahtiah <mahtiah@gmail.com>"]
+
+[dependencies]
